@@ -150,8 +150,9 @@ if(allowedTo('nchat_read')){
 
 		xmlhttp.open("POST", nchatUrl, true);
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xmlhttp.setRequestHeader("Content-length", param.length);
-		xmlhttp.setRequestHeader("Connection", "close");
+		if(!load) {
+			xmlhttp.setRequestHeader("Cache-Control","no-cache");
+		}
 		xmlhttp.send(param);
 	}
 	function nchat_parser(nchat)
